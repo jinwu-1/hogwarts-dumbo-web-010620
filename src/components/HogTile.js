@@ -13,13 +13,19 @@ class HogTile extends React.Component {
         })
     }
 
+    getImage = (name) => {
+        let newName = name.split(" ").join("_").toLowerCase();
+        let hogImage = require(`../hog-imgs/${newName}.jpg`);
+        return hogImage;
+    }
+
     render() {
         let {name} = this.props.hogObject
         return (
             <div className="ui eight wide column pigTile" onClick={this.handleClick}>
 
                 <div className="content">
-                    <img src="../hog-imgs/mudblood.jpg" alt="asdf"/>
+                    <img src={this.getImage(name)} alt={name}/>
                     <h3> {name} </h3>
                 </div>
 
